@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% set page_title="data form" %}
+
+{% block heading %}
+{% endblock %}
+
+{% block content %}
+<div class="data-form container">
+  <form method="POST">
+    <div class="mb-3">
+      <select name="qType">
+        {% for qType in tList %}
+        <option value="{{qType.type_id}}">{{qType.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="question" placeholder="Enter question">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" name="answer" placeholder="Enter answer">
+    </div>
+
+    <button type="submit" class="btn btn-secondary mt-1">
+      Add Question
+    </button>
+  </form>
+</div>
+
+<div class="data-table ">
+  <table class="qTable mt-3">
+    <tbody>
+
+      <tr>
+        <th>Type</th>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+
+      {% for q in qList %}
+      <tr>
+        <td>{{q.qTypes.name}}</td>
+        <td>{{q.question}}</td>
+        <td>{{q.answer}}</td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
